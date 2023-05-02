@@ -1,4 +1,4 @@
-# Letter Decoding Puzzle
+# unscrambling puzzle 
 
 This is a simple web-based word puzzle game that challenges the player to decode a word using clues provided, and then use that word to solve a final puzzle. The game is built using HTML, CSS, and JavaScript.
 
