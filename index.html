@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">  
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="underscore.min.js"></script>
+	<!-- <script type="text/javascript" src="coffee-script.js"></script> -->
+	<script type="text/javascript" src="wordlist.js"></script>
+	<script type="text/javascript" src="checklist.js"></script>
+	<script type="text/javascript" src="init.js"></script>
+	<!-- <script type="text/coffeescript" src="events.js.coffee"></script> -->
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript" src="display.js"></script>
+  <script type="text/javascript" src="index.js"></script>	
+  <!-- <script type="text/coffeescript" src="index.js.coffee"></script>	 -->
+
+</head>
+<body>
+<canvas id="canvas" style="position:absolute; background-color:#dddddd; left: 50%; margin-left:-180px;  width:360px;" width="360px" height="495"></canvas>
+<img src="img/blue-tile.png" id="blue-tile">
+<img src="img/black-tile.png" id="black-tile">
+<img src="img/green-tile.png" id="green-tile">
+<img src="img/orange-tile.png" id="orange-tile">
+<img src="img/red-tile.png" id="red-tile">
+<img src="img/yellow-tile.png" id="yellow-tile">
+<img src="img/white-tile.png" id="white-tile">
+
+
+<img src="img/blue-decoder.png" id="blue-decoder">
+<img src="img/green-decoder.png" id="green-decoder">
+<img src="img/orange-decoder.png" id="orange-decoder">
+<img src="img/red-decoder.png" id="red-decoder">
+<img src="img/yellow-decoder.png" id="yellow-decoder">
+<img src="img/white-decoder.png" id="white-decoder">
+
+<img src="img/black-tile-logo.png" id="black-tile-logo">
+<img src="img/settings-button.png" id="settings-button">
+<img src="img/new-button.png" id="new-button">
+<img src="img/stop-button.png" id="stop-button">
+
+<img id="backButton" src="img/back.png">
+
+<div style=" width: 300px; border: 10px solid; position: absolute; background-color: white; height: 290px; margin-left: -160px; margin-top: -160px;" id="loading_panel" class="centerDiv">
+	<p style="text-align: center; margin: 50px; font-size: 26px;">Loading</p>
+
+<img src="img/loading.gif" style="vertical-align: middle; width: 80px; height: 80px; margin-left: 37%; display: block;">
+	<p style="text-align: center; margin: 50px; font-size: 16px;">Internet Connection Required</p>
+</div>
+
+<div style="display:none; width:300px; border: 10px solid; position:absolute; background-color:white; height:320px; margin-left: -160px; margin-top: -160px;" id="setting_panel" class="centerDiv">
+<div style="text-align:center">
+<h2>Game Settings</h2>
+</div>
+<div style="text-align:left; margin:10px;">
+	Number of Words <br />
+	<input id="number_of_words" name="number_of_words" type="radio" value="9">9</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="10" checked="checked">10</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="11">11</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="12">12</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="13">13</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="14">14</input>
+	<input id="number_of_words" name="number_of_words" type="radio" value="15">15</input>
+</div>
+<div style="text-align:center">
+<h3>Score Submission</h3>
+</div>
+<div style="text-align:left; margin:20px;">
+Submit Details
+<input id="submit_details" name="difficulty" type="radio" checked /> Yes
+<input id="dont_submit_details" name="difficulty" type="radio" /> No
+</div>
+<div style="text-align:left; margin:10px;">
+	Full name
+	<input id="fullname" style="left: 100px; position:absolute;" size=25 value="firstname lastname" />
+</div>
+<div style="text-align:left; margin:10px;">
+	Email
+	<input id="email" style="left: 100px; position:absolute;" size=25 value="name@email.com" />
+</div>
+<div style="text-align:center; margin-top: 20px;">
+<input type=button value="Save" id="saveButton" style="width:150px" />
+</div>
+</div>
+<script type="text/javascript">
+	agent = navigator.userAgent.toLowerCase()
+	isiOS = _.contains(agent, "iphone") || _.contains(agent, "ipad")
+	if(isiOS) {
+	  SIZE = 29
+	  COLUMNS = 10
+	  ROWS = 9
+	  PUZZLE_LEFT = 15
+	  PUZZLE_TOP = 15
+	  width = 320
+	  height = 480
+	} else {
+	  SIZE = 30
+	  COLUMNS = 11
+	  ROWS = 9
+	  PUZZLE_LEFT = SIZE / 2
+	  PUZZLE_TOP = SIZE / 2
+	  width = (COLUMNS + 1) * SIZE
+	  height = (7.5 + ROWS) * SIZE
+	}
+	canvas = $("#canvas")
+	canvas.css('margin-left', -0.5*width)
+	canvas.css('width', width)
+	canvas.css('height', height)
+	context = canvas[0].getContext("2d")
+	if (!context.setLineDash) {
+    context.setLineDash = function (a) {
+    	context.mozDash = a
+    }
+	}
+</script>
+</body>
+</html>

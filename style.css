@@ -1,0 +1,13 @@
+.centerDiv {
+	left: 50%;
+	top: 50%;
+}
+img {
+	display: none;
+}
+canvas {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
